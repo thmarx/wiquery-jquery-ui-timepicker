@@ -8,7 +8,7 @@
 	<groupId>org.odlabs.wiquery</groupId>
 	<artifactId>wiquery-jquery-ui-timepicker</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1</version>
+	<version>1.5.5</version>
 
 	<name>wiQuery plugin project</name>
 

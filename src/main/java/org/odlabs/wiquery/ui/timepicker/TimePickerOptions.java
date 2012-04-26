@@ -48,6 +48,63 @@ public class TimePickerOptions extends Options {
 	}
 
 	
+	
+
+	public short getHour() {
+		return hour;
+	}
+
+
+
+
+	public void setHour(short hour) {
+		this.hour = hour;
+	}
+
+
+
+
+	public short getMinute() {
+		return minute;
+	}
+
+
+
+
+	public void setMinute(short minute) {
+		this.minute = minute;
+	}
+
+
+
+
+	public short getSecond() {
+		return second;
+	}
+
+
+
+
+	public void setSecond(short second) {
+		this.second = second;
+	}
+
+
+
+
+	public short getMillisec() {
+		return millisec;
+	}
+
+
+
+
+	public void setMillisec(short millisec) {
+		this.millisec = millisec;
+	}
+
+
+
 
 	public Options getOptions() {
 		return this;

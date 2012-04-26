@@ -30,6 +30,9 @@ import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 import org.odlabs.wiquery.core.options.Options;
 import org.odlabs.wiquery.ui.commons.WiQueryUIPlugin;
+import org.odlabs.wiquery.ui.datepicker.DatePickerJavaScriptResourceReference;
+import org.odlabs.wiquery.ui.effects.SlideEffectJavaScriptResourceReference;
+import org.odlabs.wiquery.ui.slider.SliderJavaScriptResourceReference;
 import org.odlabs.wiquery.ui.widget.WidgetJavaScriptResourceReference;
 
 /**
@@ -122,6 +125,10 @@ public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
 
 	@Override
 	public void renderHead(IHeaderResponse response) {
+		
+		response.renderJavaScriptReference(SliderJavaScriptResourceReference.get());
+		response.renderJavaScriptReference(DatePickerJavaScriptResourceReference.get());
+		
 		response.renderJavaScriptReference(WidgetJavaScriptResourceReference
 				.get());
 		response.renderJavaScriptReference(TimePickerJavaScriptResourceReference
@@ -206,15 +213,6 @@ public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
 	 */
 	public void enable(AjaxRequestTarget ajaxRequestTarget) {
 		ajaxRequestTarget.appendJavaScript(this.enable().render().toString());
-	}
-
-	/**
-	 * Method returning the current date for the datepicker
-	 * 
-	 * @return the associated JsStatement
-	 */
-	public JsStatement getDate() {
-		return new JsQuery(this).$().chain("timepicker", "'getDate'");
 	}
 
 	/**

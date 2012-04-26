@@ -50,7 +50,7 @@ public class TimePickerLanguageResourceReference extends
 	 *       copied the resource files to reflect both country codes, while Java
 	 *       only uses one of them...
 	 */
-	public enum DatePickerLanguages {
+	public enum TimePickerLanguages {
 		AFRIKAANS("af"), ALGERIAN("ar", "DZ"), ARABIC("ar"), AZERBAIJANI("az"), BULGARIAN(
 				"bg"), BOSNIAN("bs"), CATALAN("ca"), CZECH("cs"), DANISH("da"), GERMAN(
 				Locale.GERMAN), GREEK("el"), AUSTRALIAN("en", "AU"), UNITED_KINGDOM(
@@ -80,7 +80,7 @@ public class TimePickerLanguageResourceReference extends
 		 * 
 		 * @param locale
 		 */
-		DatePickerLanguages(Locale locale) {
+		TimePickerLanguages(Locale locale) {
 			this.locale = locale;
 		}
 
@@ -89,7 +89,7 @@ public class TimePickerLanguageResourceReference extends
 		 * 
 		 * @param language
 		 */
-		DatePickerLanguages(String language) {
+		TimePickerLanguages(String language) {
 			this.locale = new Locale(language);
 		}
 
@@ -99,7 +99,7 @@ public class TimePickerLanguageResourceReference extends
 		 * @param language
 		 * @param country
 		 */
-		DatePickerLanguages(String language, String country) {
+		TimePickerLanguages(String language, String country) {
 			this.locale = new Locale(language, country);
 		}
 
@@ -110,7 +110,7 @@ public class TimePickerLanguageResourceReference extends
 		 * @param country
 		 * @param variant
 		 */
-		DatePickerLanguages(String language, String country, String variant) {
+		TimePickerLanguages(String language, String country, String variant) {
 			this.locale = new Locale(language, country, variant);
 		}
 
@@ -128,7 +128,7 @@ public class TimePickerLanguageResourceReference extends
 		 *            Locale to search
 		 * @return the value
 		 */
-		public static DatePickerLanguages getDatePickerLanguages(Locale locale) {
+		public static TimePickerLanguages getDatePickerLanguages(Locale locale) {
 			if (locale == null)
 				return null;
 
@@ -145,7 +145,7 @@ public class TimePickerLanguageResourceReference extends
 
 			// Equals on language-country-variant
 			if (variant != null) {
-				for (DatePickerLanguages l : values()) {
+				for (TimePickerLanguages l : values()) {
 					tmpLocale = l.getLocale();
 
 					if (tmpLocale.getLanguage().equals(language)
@@ -158,7 +158,7 @@ public class TimePickerLanguageResourceReference extends
 
 			// Equals on language-country
 			if (country != null) {
-				for (DatePickerLanguages l : values()) {
+				for (TimePickerLanguages l : values()) {
 					tmpLocale = l.getLocale();
 
 					if (tmpLocale.getLanguage().equals(language)
@@ -170,7 +170,7 @@ public class TimePickerLanguageResourceReference extends
 			}
 
 			// Equals on language
-			for (DatePickerLanguages l : values()) {
+			for (TimePickerLanguages l : values()) {
 				tmpLocale = l.getLocale();
 
 				if (tmpLocale.getLanguage().equals(language)
@@ -190,7 +190,7 @@ public class TimePickerLanguageResourceReference extends
 		 *            Language to use
 		 * @return the filename
 		 */
-		public static String getJsFileName(DatePickerLanguages dpl) {
+		public static String getJsFileName(TimePickerLanguages dpl) {
 			if (dpl == null) {
 				return null;
 			}
@@ -200,7 +200,7 @@ public class TimePickerLanguageResourceReference extends
 			String variant = locale.getVariant();
 			StringBuffer js = new StringBuffer();
 
-			js.append("i18n/jquery.ui.datepicker-");
+			js.append("localization/jquery-ui-timepicker-");
 			js.append(locale.getLanguage());
 
 			if (country != null && country.trim().length() > 0) {
@@ -234,12 +234,12 @@ public class TimePickerLanguageResourceReference extends
 	 *         within our DatePickerLanguages class.
 	 */
 	public static TimePickerLanguageResourceReference get(Locale locale) {
-		DatePickerLanguages dpl = DatePickerLanguages
+		TimePickerLanguages dpl = TimePickerLanguages
 				.getDatePickerLanguages(locale);
 
 		if (dpl != null)
 			return new TimePickerLanguageResourceReference(locale,
-					DatePickerLanguages.getJsFileName(dpl));
+					TimePickerLanguages.getJsFileName(dpl));
 
 		return null;
 	}
