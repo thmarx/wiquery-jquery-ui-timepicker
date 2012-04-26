@@ -15,9 +15,10 @@ Maven repository
 
 Maven dependency: 
 -------------
-
+``` xml
 <dependency>
 	<groupId>org.odlabs.wiquery</groupId>
 	<artifactId>wiquery-jquery-ui-timepicker</artifactId>
 	<version>1.5.5</version>
 </dependency>
+```
