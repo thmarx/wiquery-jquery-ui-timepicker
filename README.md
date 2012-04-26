@@ -4,13 +4,13 @@ Wicket WiQuery TimePicker
 Maven repository
 ---------
 
-''' xml
+``` xml
 <repository>
 	<id>marx-labs</id>
 	<name>marx-labs components</name>
 	<url>http://marx-labs.googlecode.com/svn/repo/</url>
 </repository>
-'''
+```
 
 
 Maven dependency: 
