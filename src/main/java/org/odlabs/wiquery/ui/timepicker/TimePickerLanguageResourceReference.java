@@ -23,8 +23,9 @@ package org.odlabs.wiquery.ui.timepicker;
 
 import java.util.Locale;
 
-import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
-import org.odlabs.wiquery.core.ui.ICoreUIJavaScriptResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
+
+
 
 /**
  * $Id$
@@ -37,8 +38,7 @@ import org.odlabs.wiquery.core.ui.ICoreUIJavaScriptResourceReference;
  * @since 0.6
  */
 public class TimePickerLanguageResourceReference extends
-		WiQueryJavaScriptResourceReference implements
-		ICoreUIJavaScriptResourceReference {
+		JavaScriptResourceReference{
 	/**
 	 * Enumeration of possibles alternatives languages for the DatePicker
 	 * (Default locale for the DatePicker : EN)

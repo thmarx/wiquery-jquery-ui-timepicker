@@ -14,8 +14,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<wicket.version>1.5.5</wicket.version>
-		<wiquery.version>1.5.5</wiquery.version>
+		<wicket.version>6.12.0</wicket.version>
+		<wiquery.version>6.9.2</wiquery.version>
 		<jdk.version>1.6</jdk.version>
 	</properties>
 

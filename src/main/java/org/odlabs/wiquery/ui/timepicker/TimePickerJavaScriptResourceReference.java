@@ -21,14 +21,13 @@
  */
 package org.odlabs.wiquery.ui.timepicker;
 
-import org.apache.wicket.resource.dependencies.AbstractResourceDependentResourceReference;
-import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
-import org.odlabs.wiquery.core.ui.ICoreUIJavaScriptResourceReference;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.odlabs.wiquery.core.resources.JavaScriptHeaderItems;
 import org.odlabs.wiquery.ui.core.CoreUIJavaScriptResourceReference;
 
 /**
- * $Id: DatePickerJavaScriptResourceReference.java 869 2011-05-04 12:26:32Z
- * hielke.hoeve@gmail.com $
+ * $Id: DatePickerJavaScriptResourceReference.java 869 2011-05-04 12:26:32Z hielke.hoeve@gmail.com $
  * <p>
  * References the JavaScript resource to get the DatePicker component.
  * </p>
@@ -36,9 +35,7 @@ import org.odlabs.wiquery.ui.core.CoreUIJavaScriptResourceReference;
  * @author Julien Roche
  * @since 1.0
  */
-public class TimePickerJavaScriptResourceReference extends
-		WiQueryJavaScriptResourceReference implements
-		ICoreUIJavaScriptResourceReference {
+public class TimePickerJavaScriptResourceReference extends JavaScriptResourceReference {
 	private static final long serialVersionUID = -4771815414204892357L;
 
 	/**
@@ -50,8 +47,7 @@ public class TimePickerJavaScriptResourceReference extends
 	 * Builds a new instance of {@link TimePickerJavaScriptResourceReference}.
 	 */
 	private TimePickerJavaScriptResourceReference() {
-		super(TimePickerJavaScriptResourceReference.class,
-				"jquery-ui-timepicker-addon.js");
+		super(TimePickerJavaScriptResourceReference.class, "jquery-ui-timepicker-addon.js");
 	}
 
 	/**
@@ -62,10 +58,7 @@ public class TimePickerJavaScriptResourceReference extends
 	}
 
 	@Override
-	public AbstractResourceDependentResourceReference[] getDependentResourceReferences() {
-		AbstractResourceDependentResourceReference[] list = new AbstractResourceDependentResourceReference[1];
-		list[0] = CoreUIJavaScriptResourceReference.get();
-
-		return list;
+	public Iterable<? extends HeaderItem> getDependencies() {
+		return JavaScriptHeaderItems.forReferences(CoreUIJavaScriptResourceReference.get());
 	}
 }

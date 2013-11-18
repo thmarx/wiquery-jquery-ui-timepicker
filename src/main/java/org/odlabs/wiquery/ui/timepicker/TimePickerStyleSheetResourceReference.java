@@ -21,10 +21,7 @@
  */
 package org.odlabs.wiquery.ui.timepicker;
 
-import org.apache.wicket.resource.dependencies.AbstractResourceDependentResourceReference;
-import org.odlabs.wiquery.core.resources.WiQueryStyleSheetResourceReference;
-import org.odlabs.wiquery.core.ui.ICoreUIStyleSheetResourceReference;
-import org.odlabs.wiquery.ui.core.CoreUIJavaScriptResourceReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
  * $Id: DatePickerJavaScriptResourceReference.java 869 2011-05-04 12:26:32Z
@@ -37,8 +34,7 @@ import org.odlabs.wiquery.ui.core.CoreUIJavaScriptResourceReference;
  * @since 1.0
  */
 public class TimePickerStyleSheetResourceReference extends
-		WiQueryStyleSheetResourceReference implements
-		ICoreUIStyleSheetResourceReference {
+		CssResourceReference {
 	private static final long serialVersionUID = -4771815414204892357L;
 
 	/**
@@ -59,13 +55,5 @@ public class TimePickerStyleSheetResourceReference extends
 	 */
 	public static TimePickerStyleSheetResourceReference get() {
 		return instance;
-	}
-
-	@Override
-	public AbstractResourceDependentResourceReference[] getDependentResourceReferences() {
-		AbstractResourceDependentResourceReference[] list = new AbstractResourceDependentResourceReference[1];
-		list[0] = CoreUIJavaScriptResourceReference.get();
-
-		return list;
 	}
 }

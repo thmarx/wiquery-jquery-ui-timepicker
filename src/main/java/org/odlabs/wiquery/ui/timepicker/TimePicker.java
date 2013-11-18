@@ -22,14 +22,13 @@
 package org.odlabs.wiquery.ui.timepicker;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.markup.html.IHeaderResponse;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
-import org.odlabs.wiquery.core.IWiQueryPlugin;
 import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 import org.odlabs.wiquery.core.options.Options;
-import org.odlabs.wiquery.ui.commons.WiQueryUIPlugin;
 import org.odlabs.wiquery.ui.datepicker.DatePickerJavaScriptResourceReference;
 import org.odlabs.wiquery.ui.effects.SlideEffectJavaScriptResourceReference;
 import org.odlabs.wiquery.ui.slider.SliderJavaScriptResourceReference;
@@ -42,9 +41,8 @@ import org.odlabs.wiquery.ui.widget.WidgetJavaScriptResourceReference;
  * </p>
  * 
  * <p>
- * By default, the datepicker calendar opens in a small overlay onFocus and
- * closes automatically onBlur or when a date if selected. For an inline
- * calendar, simply attach the datepicker to a div or span.
+ * By default, the datepicker calendar opens in a small overlay onFocus and closes automatically onBlur or when a date
+ * if selected. For an inline calendar, simply attach the datepicker to a div or span.
  * 
  * 
  * Missing functionnalities
@@ -55,8 +53,7 @@ import org.odlabs.wiquery.ui.widget.WidgetJavaScriptResourceReference;
  * @author Lionel Armanet
  * @since 0.6
  */
-@WiQueryUIPlugin
-public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
+public class TimePicker<T> extends TextField<T> {
 
 	// Constants
 	/** Constant of serialization */
@@ -125,25 +122,21 @@ public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
 
 	@Override
 	public void renderHead(IHeaderResponse response) {
-		
-		response.renderJavaScriptReference(SliderJavaScriptResourceReference.get());
-		response.renderJavaScriptReference(DatePickerJavaScriptResourceReference.get());
-		
-		response.renderJavaScriptReference(WidgetJavaScriptResourceReference
-				.get());
-		response.renderJavaScriptReference(TimePickerJavaScriptResourceReference
-				.get());
-		response.renderCSSReference(TimePickerStyleSheetResourceReference.get());
 
-		TimePickerLanguageResourceReference dpl = TimePickerLanguageResourceReference
-				.get(getLocale());
+		response.render(JavaScriptReferenceHeaderItem.forReference(SliderJavaScriptResourceReference.get()));
+		response.render(JavaScriptReferenceHeaderItem.forReference(DatePickerJavaScriptResourceReference.get()));
+
+		response.render(JavaScriptReferenceHeaderItem.forReference(WidgetJavaScriptResourceReference.get()));
+		response.render(JavaScriptReferenceHeaderItem.forReference(TimePickerJavaScriptResourceReference.get()));
+		response.render(JavaScriptReferenceHeaderItem.forReference(TimePickerStyleSheetResourceReference.get()));
+
+		TimePickerLanguageResourceReference dpl = TimePickerLanguageResourceReference.get(getLocale());
 		if (dpl != null)
-			response.renderJavaScriptReference(dpl);
+			response.render(JavaScriptReferenceHeaderItem.forReference(dpl));
 	}
 
 	public JsStatement statement() {
-		return new JsQuery(this).$().chain("timepicker",
-				options.getOptions().getJavaScriptOptions());
+		return new JsQuery(this).$().chain("timepicker", options.getOptions().getJavaScriptOptions());
 	}
 
 	/**
@@ -157,12 +150,9 @@ public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
 
 	/*---- Options section ---*/
 
-	
-
 	/*---- Methods section ---*/
 	/**
-	 * Method to destroy the datepicker This will return the element back to its
-	 * pre-init state.
+	 * Method to destroy the datepicker This will return the element back to its pre-init state.
 	 * 
 	 * @return the associated JsStatement
 	 */
@@ -223,8 +213,7 @@ public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
 	 * @return the associated JsStatement
 	 */
 	public JsStatement hide(short speed) {
-		return new JsQuery(this).$().chain("timepicker", "'hide'",
-				Short.toString(speed));
+		return new JsQuery(this).$().chain("timepicker", "'hide'", Short.toString(speed));
 	}
 
 	/**
@@ -235,8 +224,7 @@ public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
 	 *            The speed at which to close the date picker.
 	 */
 	public void hide(AjaxRequestTarget ajaxRequestTarget, short speed) {
-		ajaxRequestTarget
-				.appendJavaScript(this.hide(speed).render().toString());
+		ajaxRequestTarget.appendJavaScript(this.hide(speed).render().toString());
 	}
 
 	/**
@@ -256,8 +244,6 @@ public class TimePicker<T> extends TextField<T> implements IWiQueryPlugin {
 	public void hide(AjaxRequestTarget ajaxRequestTarget) {
 		ajaxRequestTarget.appendJavaScript(this.hide().render().toString());
 	}
-
-
 
 	/**
 	 * Method to show the datepicker
